@@ -180,8 +180,8 @@ Use TDD to update the `Event` class so that it adds the following functionality:
 
 | Method Name               |      Return Value (type)
 | ------------------------- | ---------------------------
-| `overstock_items`         | `Array` of `Event` objects
-| `sorted_item_list`        | Alphabetically sorted `Array` of all `FoodTruck` item <u>names</u> (no duplicates!)
+| `overstock_items`         | `Array` of `Item` objects
+| `sorted_item_list`        | Alphabetically sorted `Array` of `Items`: all `FoodTruck` item <u>names</u> (no duplicates!)
 | `total_inventory`         | `Hash` with `Item`s as keys and a sub-hash as the value. The sub-hash should have `quantity` and `food_trucks` keys.(See example below)
 
 ```ruby

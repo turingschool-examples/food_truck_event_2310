@@ -27,6 +27,6 @@ RSpec.describe FoodTruck do
         food_truck1 = FoodTruck.new("Rocky Mountain Pies")
         food_truck1.stock(item1, 30)
 
-        expect(food_truck1.potential_revenue).to eq(900)
+        expect(food_truck1.potential_revenue).to eq(90)
     end
 end

@@ -27,7 +27,7 @@ Use TDD to create a `FoodTruck` class that responds to the following interaction
 pry(main)> require './lib/item'
 #=> true
 
-pry(main)> require './lib/food_truck'
+pry(main)> require require './lib/item'
 #=> true
 
 pry(main)> item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
@@ -116,7 +116,7 @@ pry(main)> food_truck1 = FoodTruck.new("Rocky Mountain Pies")
 pry(main)> item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
 #=> #<Item:0x007f9c56740d48...>
 
-pry(main)> item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
+pry(main)> item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
 #=> #<Item:0x007f9c565c0ce8...>
 
 pry(main)> item3 = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})

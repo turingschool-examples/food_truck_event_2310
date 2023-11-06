@@ -15,4 +15,12 @@ class FoodTruck
         current_stock += count
         @inventory[item] = current_stock
     end
+
+    def potential_revenue
+        cumulative_revenue_potential = 0
+        @inventory.each do |item, count|
+            cumulative_revenue_potential += (item.price * count)
+        end
+        cumulative_revenue_potential
+    end
 end

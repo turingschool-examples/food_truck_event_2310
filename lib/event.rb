@@ -19,7 +19,12 @@ class Event
     @food_trucks.select{|food_truck| food_truck.inventory.include?(item)}
   end
 
-  def potential_revenue
-    
+  
+
+  def total_inventory
+    total_items = Hash.new
+    @food_trucks.each do |food_truck|
+      food_truck.inventory do |item, quantity|
+    end
   end
 end

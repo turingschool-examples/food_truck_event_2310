@@ -35,9 +35,8 @@ RSpec.describe Event do
 
     it 'takes in one FoodTruck parameter and returns an Array of FoodTruck from @food_trucks' do
       expect(event.add_food_truck(food_truck1)).to be_a Array
-      expect(event.add_food_truck(food_truck1)).to eq([food_truck1])
+      expect(event.add_food_truck(food_truck2)).to eq([food_truck1, food_truck2])
 
-      event.add_food_truck(food_truck2)
       event.add_food_truck(food_truck3)
 
       expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
@@ -58,6 +57,9 @@ RSpec.describe Event do
     food_truck2.stock(item3, 25)
     food_truck3 = FoodTruck.new("Palisade Peach Shack")
     food_truck3.stock(item1, 65)
+    event.add_food_truck(food_truck1)
+    event.add_food_truck(food_truck2)
+    event.add_food_truck(food_truck3)
 
     it 'has no parameters, and returns an Array of String FoodTruck @name' do
       expect(event.food_truck_names).to be_a Array

@@ -11,6 +11,8 @@ class FoodTruck
     end
 
     def stock(item, count)
-        @inventory[item] = count
+        current_stock = check_stock(item)
+        current_stock += count
+        @inventory[item] = current_stock
     end
 end

@@ -1,6 +1,7 @@
 require './lib/item'
 require './lib/food_truck'
 require './lib/event'
+require 'pry'
 
 RSpec.describe Event do
   before :each do
@@ -57,5 +58,18 @@ RSpec.describe Event do
     expect(@food_truck1.potential_revenue).to eq(148.75)
     expect(@food_truck2.potential_revenue).to eq(345.00)
     expect(@food_truck3.potential_revenue).to eq(243.75)
+  end
+
+  it 'can create a sorted item list' do
+
+    expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
+  end
+
+  it 'can return a total inventory' do
+    total_inventory = @event.total_inventory
+
+    expect(total_inventory[@item1][:quantity]).to eq(100)
+    expect(total_inventory[@item1][:food_trucks]).to eq([@food_truck1, @food_truck3])
+
   end
 end

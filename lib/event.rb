@@ -17,4 +17,8 @@ class Event
   def food_trucks_that_sell(item)
     @food_trucks.select { |food_truck| food_truck.inventory.include?(item)}
   end
+
+  def sorted_item_list
+    @food_trucks.map { |food_truck| food_truck.inventory.keys.map { |item| item.name} }.flatten.uniq.sort
+  end
 end

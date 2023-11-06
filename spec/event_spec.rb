@@ -29,7 +29,7 @@ describe Event do
         expect(event.food_truck_names).to contain_exactly("Rocky Mountain Pies", "Ba-Nom-a-Nom")
     end
 
-    it "collates food trucks selling a given item" do
+    it "collates food trucks selling a given item, and collates list of all item names sold by all trucks" do
         event = Event.new("South Pearl Street Farmers Market")
         food_truck1 = FoodTruck.new("Rocky Mountain Pies")
         food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
@@ -53,5 +53,7 @@ describe Event do
         expect(event.food_trucks_that_sell(item1)).to contain_exactly(food_truck1, food_truck3)
         expect(event.food_trucks_that_sell(item2)).to contain_exactly(food_truck1)
         expect(event.food_trucks_that_sell(item3)).to contain_exactly(food_truck2)
+
+        expect(event.sorted_item_list).to eq([item2.name, item4.name, item1.name, item3.name])
     end
 end

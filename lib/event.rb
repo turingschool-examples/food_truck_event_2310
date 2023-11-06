@@ -23,4 +23,18 @@ class Event
             end
         end
     end
+
+    def sorted_item_list
+        sold_items_hash = {}
+        sold_items_array = []
+        @food_trucks.each do |truck|
+            truck.inventory.each do |item, count|
+                sold_items_hash[item] = count
+            end
+        end
+        sold_items_hash.map do |item, count|
+            sold_items_array << item.name
+        end
+        sold_items_array.sort
+    end
 end

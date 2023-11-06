@@ -13,6 +13,12 @@ class Event
   end
 
   def food_truck_names
-    @food_trucks
+    @food_trucks.map {|truck| truck.name}
+  end
+
+  def food_trucks_that_sell(item1)
+    if @food_trucks.include?(item1)
+      p @food_trucks
+    end
   end
 end

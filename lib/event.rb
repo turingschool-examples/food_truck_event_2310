@@ -42,4 +42,19 @@ class Event
         end
         list.sort
     end
+
+    def total_inventory
+        ti = {}
+        @food_trucks.each do |truck|
+            truck.inventory.each do |item, stock|
+                if ti.has_key?(item) == false
+                    ti[item] = {"quantity" => stock, "food_trucks" => [truck]}
+                else
+                    ti[item]["quantity"] += stock
+                    ti[item]["food_trucks"].append(truck)
+                end
+            end
+        end
+        ti
+    end
 end

@@ -33,7 +33,15 @@ RSpec.describe Event do
     event.add_food_truck(food_truck3)
     
     expect(event.food_trucks).to eq([food_truck1, food_truck2, food_truck3])
-    # expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
+  end
+
+  it 'returns food truck names' do
+    event = Event.new("South Pearl Street Farmers Market")
+    event.add_food_truck(FoodTruck.new("Rocky Mountain Pies"))    
+    event.add_food_truck(FoodTruck.new("Ba-Nom-a-Nom"))    
+    event.add_food_truck(FoodTruck.new("Palisade Peach Shack"))
+
+    expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
   end
 
 end

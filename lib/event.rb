@@ -6,9 +6,11 @@ class Event
     @food_trucks = []
   end
 
-  # def food_truck_names
-    
-  # end
+  def food_truck_names
+    @food_trucks.map do |food_truck|
+      food_truck.name
+    end
+  end
 
   def add_food_truck(food_truck)
     @food_trucks << food_truck if !@food_trucks.include?(food_truck)

@@ -16,4 +16,10 @@ class Event
     @food_trucks << food_truck if !@food_trucks.include?(food_truck)
   end
 
+  def food_trucks_that_sell(item)
+    @food_trucks.find_all do |food_truck|
+      food_truck.inventory[item] != nil
+    end
+  end
+
 end

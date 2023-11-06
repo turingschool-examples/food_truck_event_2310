@@ -12,13 +12,13 @@ class FoodTruck
 
   def stock(item, item_quantity)
     if inventory.key?(item)
-      inventory[:item] += quantity
+      inventory[item] += item_quantity
     else 
-    inventory[:item] = quantity
+      inventory[item] = item_quantity
     end
   end
 
-  # def check_stock(item)
-  #   inventory[:item] || 0
-  # end
+  def check_stock(item)
+    inventory[item] || 0
+  end
 end

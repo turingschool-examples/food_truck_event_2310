@@ -15,4 +15,12 @@ class Event
             truck.name
         end
     end
+
+    def food_trucks_that_sell(item)
+        @food_trucks.filter_map do |truck|
+            if truck.check_stock(item) > 0
+                truck
+            end
+        end
+    end 
 end

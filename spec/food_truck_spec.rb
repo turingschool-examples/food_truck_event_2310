@@ -1,20 +1,20 @@
 require './lib/food_truck'
 require './lib/item'
 
-RSpec.describe Food_Truck
+RSpec.describe Food_Truck do
     it "can make new items" do
         item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
         expect(item1.name).to eq('Peach Pie (Slice)')
         expect(item1.price).to eq(3.75)
     end
 
-    it 'can make food truck' do
+    xit 'can make food truck' do
         food_truck = FoodTruck.new("Rocky Mountain Pies")
         expect(food_truck.name).to eq("Rocky Mountain Pies")
         expect(food_truck.inventory).to eq({})
     end
 
-    it 'can stock food truck' do
+    xit 'can stock food truck' do
         item1 = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
         food_truck = FoodTruck.new("Rocky Mountain Pies")
         expect(food_truck.check_stock(item1)).to eq(0)

@@ -18,7 +18,11 @@ class Event
     trucks
   end
 
-  def food_trucks_that_sell(item)
-    
+  def food_trucks_that_sell(item) # spent 1 hr on this because I wasn't using .find!
+    trucks = []
+    @food_trucks.find_all do |truck|
+      trucks << truck if truck.inventory.keys.find {|key| key.name == item.name}
+    end
+    trucks
   end
 end

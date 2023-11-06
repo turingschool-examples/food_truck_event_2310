@@ -37,4 +37,23 @@ class Event
         end
         sold_items_array.sort
     end
+
+    def total_inventory
+        sold_items_hash = {}
+        sold_items_array = []
+        @food_trucks.each do |truck|
+            truck.inventory.each do |item, count|
+                sold_items_hash[item] = count
+            end
+        end
+        sold_items_hash.map do |item, count|
+            sold_items_array << item
+        end
+        sold_items_array.each do |item|
+            @food_trucks.each do |truck|
+                current_count = truck.check_stock(item)
+                
+            end
+        end
+    end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Foodtruck do
+RSpec.describe FoodTruck do
 
   it 'exists' do
     food_truck = FoodTruck.new("Rocky Mountain Pies")

@@ -8,7 +8,7 @@ class FoodTruck
 
   #return 0 if item isn't found.
   def check_stock(item)
-    @inventory[item] || 0
+    @inventory[item]
   end
 
   def stock(item, quantity)

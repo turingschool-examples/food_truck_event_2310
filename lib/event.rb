@@ -57,4 +57,17 @@ class Event
         end
         ti
     end
+
+    def overstocked_items
+        overstocked = []
+        ti = total_inventory
+
+        ti.each do |item, hash|
+            if hash["quantity"] > 50 && hash["food_trucks"].length > 1
+                overstocked.append(item)
+            end
+        end
+
+        overstocked
+    end
 end

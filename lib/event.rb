@@ -49,4 +49,10 @@ class Event
     end
     total_items
   end
+
+  def date
+    date = Time.now
+    if date.day 
+    "#{date.day}/#{date.month}/#{date.year}"
+  end
 end

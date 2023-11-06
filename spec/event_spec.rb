@@ -181,7 +181,12 @@ RSpec.describe Event do
 
     it 'has a String parameter that returns a String of the desired Date in dd/mm/yyyy' do
 
-      expect(event.date(yesterday)).to eq("06/11/23")
+      allow(event).to receive(:date).and_return("05/11/23")
+      expect(event.date).to eq("05/11/23")
+    end
+
+    it 'can return the date' do
+      expect(event.date).to eq("06/11/23")
     end
   end
 

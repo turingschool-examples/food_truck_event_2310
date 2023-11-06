@@ -35,4 +35,20 @@ class Event
     end
     item_array.uniq.sort
   end
+
+  def items_available_global
+    global_items = {}
+    all_items_all_trucks.each do |item|
+      @food_trucks.each do |truck|
+        truck.inventory.each do |key, value|
+          if key.name == item && global_items[item] == nil
+            global_items[item] = [value]
+          elsif key.name == item && global_items[item] != nil
+            global_items[item] << value
+          end
+        end
+      end
+    end
+    global_items
+  end
 end

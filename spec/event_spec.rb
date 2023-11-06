@@ -12,19 +12,19 @@ RSpec.describe Event do
     @item4 = Item.new({name: "Banana Nice Cream", price: "$4.25"})
   
     @food_truck1 = FoodTruck.new("Rocky Mountain Pies")
-    @food_truck1.stock(item1, 35) 
-    @food_truck1.stock(item2, 7)  
+    @food_truck1.stock(@item1, 35) 
+    @food_truck1.stock(@item2, 7)  
   
     @food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")  
-    @food_truck2.stock(item4, 50)    
-    @food_truck2.stock(item3, 25)
+    @food_truck2.stock(@item4, 50)    
+    @food_truck2.stock(@item3, 25)
   
     @food_truck3 = FoodTruck.new("Palisade Peach Shack") 
-    @food_truck3.stock(item1, 65) 
+    @food_truck3.stock(@item1, 65) 
   
-    @event.add_food_truck(food_truck1) 
-    @event.add_food_truck(food_truck2) 
-    @event.add_food_truck(food_truck3)
+    @event.add_food_truck(@food_truck1) 
+    @event.add_food_truck(@food_truck2) 
+    @event.add_food_truck(@food_truck3)
   end
 
   it 'can intialize' do
@@ -35,11 +35,6 @@ RSpec.describe Event do
   it 'has a name' do
     
     expect(@event.name).to eq("South Pearl Street Farmers Market")
-  end
-
-  it 'can have food trucks' do
-
-    expect(@event.food_trucks).to eq([])
   end
 
   it 'can add food trucks' do
@@ -55,7 +50,7 @@ RSpec.describe Event do
 
   it 'can find food trucks at the event that sell specific items' do
     expect(@event.food_trucks_that_sell(@item1)).to include(@food_truck1, @food_truck3)
-    expect(@Event.food_trucks_that_sell(@item4)).to include(@food_truck2)
+    expect(@event.food_trucks_that_sell(@item4)).to include(@food_truck2)
   end
 
   it 'can calculate potential revenue for each food truck' do

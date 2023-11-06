@@ -17,7 +17,7 @@ describe Event do
         expect(event.food_trucks).to eq([])
     end
 
-    it "adds a food truck" do
+    it "adds a food truck and populates an array with food truck names" do
         event = Event.new("South Pearl Street Farmers Market")
         food_truck1 = FoodTruck.new("Rocky Mountain Pies")
         food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
@@ -26,5 +26,6 @@ describe Event do
         event.add_food_truck(food_truck2)
 
         expect(event.food_trucks).to include(food_truck1, food_truck2)
-    end    
+        expect(event.food_truck_names).to include("Rocky Mountain Pies", "Ba-Nom-a-Nom")
+    end
 end

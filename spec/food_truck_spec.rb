@@ -36,7 +36,18 @@ RSpec.describe FoodTruck do
   it 'has 0 stock when called with check_stock' do
   expect(@food_truck.check_stock(@item1)).to eq(0)
   end
+  
+  it 'can stock an item' do
+  @food_truck.stock(@item1, 30)
 
-
+  expect(@food_truck.check_stock(@item1)).to eq(30)
+  end
+  
+  it 'can stock more of an item and add to the total' do
+  @food_truck.stock(@item1, 30)
+  @food_truck.stock(@item1, 25)
+require 'pry'; binding.pry
+  expect(@food_truck.check_stock(@item1)).to eq(55)
+  end
 
 end

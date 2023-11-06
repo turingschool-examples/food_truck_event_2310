@@ -21,7 +21,6 @@ class FoodTruck
     end
   end
 
-
   def potential_revenue
     revenue_array = @inventory.keys.map do |item_object|
       item_object.price * @inventory[item_object]

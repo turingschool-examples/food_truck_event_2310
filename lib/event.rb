@@ -21,7 +21,5 @@ class Event
     end
   end
 
-  def potential_revenue
-    
-  end
+  
 end

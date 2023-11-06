@@ -28,7 +28,7 @@ RSpec.describe Event do
   end
 
   describe '##stock' do
-    it 'stocks an item to a food truck' do
+    it 'functions' do
       @food_truck1.stock(@item1, 35)
       @food_truck1.stock(@item2, 7)
 

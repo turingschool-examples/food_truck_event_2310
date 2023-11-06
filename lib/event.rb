@@ -12,6 +12,6 @@ class Event
   end
 
   def add_food_truck(truck)
-    @food_truck << truck
+    @food_trucks << truck
   end
 end

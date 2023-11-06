@@ -19,6 +19,16 @@ class Event
 
   def food_trucks_that_sell(item)
     @food_trucks.select{|food_truck| food_truck.inventory.include?(item)}
+
+    # trucks = []
+    # @food_trucks.each do |truck|
+    #   truck.inventory.keys.each do |key, amount|
+    #     if item.name == key.name
+    #       trucks << truck
+    #     end
+    #   end
+    # end
+    # trucks.uniq
   end
 
   def sorted_item_list
@@ -29,6 +39,12 @@ class Event
       end
     end
     sorted_list.uniq.sort!
+
+    # @food_trucks.flat_map do |truck|
+    #   truck.inventory.keys.map do |item|
+    #     item.name
+    #   end
+    # end.uniq.sort
   end
 
   def total_inventory
@@ -42,7 +58,7 @@ class Event
           total_items[item][:food_trucks] << food_truck
           total_items[item][:food_trucks] = total_items[item][:food_trucks].uniq
         else
-          total_items[item][:quantity] = total_items[item][:quantity] + amount
+          total_items[item][:quantity] +=  amount
           total_items[item][:food_trucks] << food_truck
         end
       end
@@ -50,9 +66,18 @@ class Event
     total_items
   end
 
+  def overstocked_items
+    total_inventory.map do |item, subhash|
+      if subhash[:quantity] > 50 && subhash[:food_trucks].count > 1
+        item
+      end
+    end.compact
+  end
+
   def date
     date = Time.now
-    if date.day 
+    if date.day
     "#{date.day}/#{date.month}/#{date.year}"
+    end
   end
 end

@@ -32,4 +32,36 @@ class Event
     item_list.uniq.sort
   end
 
+  def total_inventory
+    inventory_items = [] # array of item instances
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |inventory_item, inventory_quantity|
+        inventory_items << inventory_item if !inventory_items.include?(inventory_item)
+      end
+    inventory_items
+    end
+
+    total_inventory = {}
+    inventory_items.each do |inventory_item|
+      total_inventory[inventory_item] = {}
+      total_inventory[inventory_item][:quantity] = 0
+      total_inventory[inventory_item][:food_trucks] = []
+    end
+
+    @food_trucks.each do |food_truck|
+      food_truck.inventory.each do |inventory_item, inventory_quantity|
+        if total_inventory[inventory_item][:quanity] != 0
+          total_inventory[inventory_item][:quantity] += inventory_quantity
+        else
+          total_inventory[inventory_item][:quantity] = inventory_quantity
+        end
+      end
+    end
+
+    inventory_items.each do |inventory_item|
+      total_inventory[inventory_item][:food_trucks] = food_trucks_that_sell(inventory_item)
+    end
+  total_inventory
+  end
+
 end

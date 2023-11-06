@@ -31,10 +31,4 @@ class Event
     end
     trucks_that_sell_item
   end
-
-  # def potential_revenue(food_truck)
-  #   require 'pry'; binding.pry
-  #   food_truck.inventory
-
-  # end
 end

@@ -15,7 +15,8 @@ RSpec.describe Event do
 
   describe '#attributes' do
     it 'reads attrritbutes and returns them' do
-      expect().to eq()
+      expect(@event.name).to eq("South Pearl Street Farmers Market")
+      expect(@event.food_trucks).to eq([])
     end
   end
 end

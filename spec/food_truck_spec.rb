@@ -12,4 +12,11 @@ RSpec.describe FoodTruck do
       expect(@food_truck).to be_a(FoodTruck)
     end
   end
+
+  describe '#reads attributes' do
+    it 'returns attributes' do
+      expect(@food_truck.name).to eq("Rocky Mountain Pies")
+      expect(@food_truck.inventory).to eq({})
+    end
+  end
 end

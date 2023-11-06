@@ -10,9 +10,9 @@ RSpec.describe Item do
 
     it 'has @name that is a String and @price that is an Integer' do
       expect(item1.name).to be_a String
-      expect(item1.price).to be_a Integer
-      expect(item1.name).to eq("Apple Pie (Slice)")
-      expect(item1.price).to eq(2.50)
+      expect(item1.price).to be_a Float
+      expect(item1.name).to eq("Peach Pie (Slice)")
+      expect(item1.price).to eq(3.75)
     end
   end
 end

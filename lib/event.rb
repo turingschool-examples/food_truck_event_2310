@@ -20,4 +20,21 @@ class Event
       truck.name
     end
   end
+
+  def food_trucks_that_sell(items)
+    trucks_that_sell_item = []
+
+    @food_trucks.each do |food_truck|
+      if food_truck.inventory.include?(items) 
+        trucks_that_sell_item << food_truck
+      end
+    end
+    trucks_that_sell_item
+  end
+
+  # def potential_revenue(food_truck)
+  #   require 'pry'; binding.pry
+  #   food_truck.inventory
+
+  # end
 end

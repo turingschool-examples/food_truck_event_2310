@@ -22,5 +22,5 @@ class Event
                 truck
             end
         end
-    end 
+    end
 end

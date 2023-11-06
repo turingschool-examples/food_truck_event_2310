@@ -51,4 +51,21 @@ RSpec.describe Event do
       expect(@food_truck3.potential_revenue).to eq(243.75)
     end
   end
+
+  describe '#sorted_items_list' do
+    it 'sorts items alphabetically' do
+      @food_truck1.stock(@item1, 35)
+      @food_truck1.stock(@item2, 7)
+
+      @food_truck2.stock(@item4, 50)    
+      @food_truck2.stock(@item3, 25)
+
+      @food_truck3.stock(@item1, 65)
+
+      @event.add_food_truck(@food_truck1)
+      @event.add_food_truck(@food_truck2)
+      @event.add_food_truck(@food_truck3)
+      expect(@event.sorted_item_list).to eq(['Apple Pie (Slice)', "Banana Nice Cream",'Peach Pie (Slice)',"Peach-Raspberry Nice Cream"])
+    end
+  end
 end

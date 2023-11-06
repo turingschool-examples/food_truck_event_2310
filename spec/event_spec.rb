@@ -106,6 +106,31 @@ RSpec.describe Event do
 
     end
 
-    
+    it "has a overstocked items method" do
+      event = Event.new("South Pearl Street Farmers Market") 
+      peach = Item.new({name: 'Peach Pie (Slice)', price: "$3.75"})
+      apple = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
+      rasp = Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})
+      banana = Item.new({name: "Banana Nice Cream", price: "$4.25"})
+  
+      food_truck1 = FoodTruck.new("Rocky Mountain Pies")
+      food_truck1.stock(peach, 35)
+      food_truck1.stock(apple, 7)
+  
+      food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
+      food_truck2.stock(banana, 50)
+      food_truck2.stock(rasp, 25)
+  
+      food_truck3 = FoodTruck.new("Palisade Peach Shack")
+      food_truck3.stock(peach, 65)
+  
+      event.add_food_truck(food_truck1)
+      event.add_food_truck(food_truck2) 
+      event.add_food_truck(food_truck3)
+
+      expect(event.overstocked_items).to eq([peach])
+
+      
+    end
 
   end

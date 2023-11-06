@@ -63,6 +63,12 @@ class Event
     hash1
   end
 
-
-
+  def overstocked_items
+    hash = total_inventory
+    require 'pry'; binding.pry
+    list = hash.find_all do |key, value|
+      require 'pry'; binding.pry
+      item[:quantity] > 50 && item[:food_trucks].count > 1
+    end
+  end
 end

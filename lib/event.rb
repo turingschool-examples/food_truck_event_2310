@@ -1,9 +1,19 @@
-class Event
-  attr_reader :name, :food_trucks
+require 'date'
 
-  def initialize(name)
+class Event
+  attr_reader :name, :food_trucks, :date
+
+  def initialize(name, date = nil)
     @name = name
     @food_trucks = []
+    @date
+  end
+
+  # not sure if this is what is required. 
+  # https://bootrails.com/blog/ruby-strftime-short-and-long-story/
+  def set_date(year, month, day)
+    @date = Date.new(year, month, day)
+    @date = @date.strftime("%d-%m-%Y")
   end
 
   def add_food_truck(food_truck)
@@ -50,5 +60,9 @@ class Event
       end
     end
     overstocked_items
+  end
+
+  def sell
+    
   end
 end

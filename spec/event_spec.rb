@@ -86,4 +86,11 @@ RSpec.describe Event do
     expect(@event.overstocked_items).not_to include(@item3)
     expect(@event.overstocked_items).not_to include(@item4)
   end
+
+  it 'has a start date' do
+    @event.set_date(2020, 3, 18)
+    binding.pry
+    expect(@event.date.to_s).to eq '2020-03-18'
+    expect(@event.date).to eq Date.new(2020, 3, 18)
+  end
 end

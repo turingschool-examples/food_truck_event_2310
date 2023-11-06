@@ -1,10 +1,12 @@
 require './lib/item'
 require './lib/food_truck'
+require 'pry'
 
 
 RSpec.describe FoodTruck do
   it 'exists' do
-  
+    food_truck = FoodTruck.new("Rocky Mountain Pies")
+
     expect(food_truck).to be_an_instance_of(FoodTruck)
   end
 
@@ -15,6 +17,7 @@ RSpec.describe FoodTruck do
 
     expect(item2.name).to eq("Apple Pie (Slice)")
     expect(item2.price).to eq(2.50)
-    expect(@food_truck.name).to eq("Rocky Mountain Pies")
+    expect(food_truck.name).to eq("Rocky Mountain Pies")
   end
+end
     

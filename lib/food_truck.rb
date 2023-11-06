@@ -3,25 +3,20 @@ class FoodTruck
 
   def initialize(name)
     @name = name
-    @inventory = {}
+    @inventory = Hash.new(0)
   end
 
   def stock(item, quantity)
-    if @inventory[item] == nil
-      @inventory.store(item, quantity) 
-    else
       @inventory[item] += quantity
-    end
   end
 
   def check_stock(item)
-    @inventory[item] = 0 if @inventory[item] == nil
     @inventory[item]
   end
 
   def potential_revenue
-    @inventory.sum do |inventory_item, inventory_quantity|
-      inventory_item.price.delete("$").to_f * inventory_quantity
+    @inventory.sum do |item, quantity|
+      item.price * quantity
     end
   end
 

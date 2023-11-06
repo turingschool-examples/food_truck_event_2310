@@ -6,69 +6,86 @@ class Event
     @food_trucks = []
   end
 
+  def add_food_truck(truck)
+    @food_trucks << truck if !@food_trucks.include?(truck)
+  end
+
   def food_truck_names
-    @food_trucks.map do |food_truck|
-      food_truck.name
+    @food_trucks.map do |truck|
+      truck.name
     end
   end
 
-  def add_food_truck(food_truck)
-    @food_trucks << food_truck if !@food_trucks.include?(food_truck)
-  end
-
   def food_trucks_that_sell(item)
-    @food_trucks.find_all do |food_truck|
-      food_truck.inventory[item] != nil
+    @food_trucks.find_all do |truck|
+      truck.inventory.include?(item)
     end
   end
 
   def sorted_item_list
-    item_list = []
-    @food_trucks.each do |food_truck|
-      food_truck.inventory.each do |inventory_item, inventory_quantity|
-        item_list << inventory_item.name
+    items = @food_trucks.flat_map do |truck|
+      truck.inventory.map do |item, quantity|
+        item.name
       end
     end
-    item_list.uniq.sort
+    items.uniq.sort
   end
 
   def total_inventory
-    inventory_items = [] # array of item instances
-    @food_trucks.each do |food_truck|
-      food_truck.inventory.each do |inventory_item, inventory_quantity|
-        inventory_items << inventory_item if !inventory_items.include?(inventory_item)
-      end
-    inventory_items
-    end
+    inventory = {}
 
-    total_inventory = {}
-    inventory_items.each do |inventory_item|
-      total_inventory[inventory_item] = {}
-      total_inventory[inventory_item][:quantity] = 0
-      total_inventory[inventory_item][:food_trucks] = []
-    end
-
-    @food_trucks.each do |food_truck|
-      food_truck.inventory.each do |inventory_item, inventory_quantity|
-        if total_inventory[inventory_item][:quantity] != 0
-          total_inventory[inventory_item][:quantity] += inventory_quantity
+    @food_trucks.each do |truck|
+      truck.inventory.each do |item, quantity|
+        if inventory[item]
+          inventory[item][:quantity] += quantity
+          inventory[item][:food_trucks] << truck
         else
-          total_inventory[inventory_item][:quantity] = inventory_quantity
+          inventory[item] = {
+            quantity: quantity,
+            food_trucks: [truck]
+          }
         end
       end
     end
-
-    inventory_items.each do |inventory_item|
-      total_inventory[inventory_item][:food_trucks] = food_trucks_that_sell(inventory_item)
-    end
-  total_inventory
+    inventory
   end
 
+  #   items = []
+  #   @food_trucks.each do |truck|
+  #     truck.inventory.each do |item, quantity|
+  #       items << item
+  #     end
+  #   items.uniq
+  #   end
+
+  #   total_inventory = {}
+  #   items.each do |item|
+  #     total_inventory[item] = {}
+  #     total_inventory[item][:quantity] = 0
+  #     total_inventory[item][:food_trucks] = []
+  #   end
+
+  #   @food_trucks.each do |truck|
+  #     truck.inventory.each do |item, quantity|
+  #       if total_inventory[item][:quantity] != 0
+  #         total_inventory[item][:quantity] += quantity
+  #       else
+  #         total_inventory[item][:quantity] = quantity
+  #       end
+  #     end
+  #   end
+
+  #   items.each do |item|
+  #     total_inventory[item][:food_trucks] = food_trucks_that_sell(item)
+  #   end
+  # total_inventory
+  # end
+
   def overstocked_items
-    total_inventory.find_all do |inventory_item, hash|
-      total_inventory[inventory_item][:quantity] > 50 &&
-      total_inventory[inventory_item][:food_trucks].count > 1
-    end
+    total_inventory.keys.find_all do |item|
+      total_inventory[item][:quantity] > 50 &&
+      total_inventory[item][:food_trucks].count > 1
+    end.flatten
   end
 
 end

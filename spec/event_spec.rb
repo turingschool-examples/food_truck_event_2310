@@ -40,7 +40,10 @@ RSpec.describe Event do
 
     expect(event.food_truck_names).to eq(["Rocky Mountain Pies", "Ba-Nom-a-Nom", "Palisade Peach Shack"])
     expect(event.food_trucks_that_sell(item1)).to eq([food_truck1, food_truck3])
-  expect(food_truck1.potential_revenue).to eq(true)
+    expect(food_truck1.potential_revenue).to eq(148.75)
+    expect(food_truck2.potential_revenue).to eq(345.00)
+    expect(food_truck3.potential_revenue).to eq(243.75)
+
   end
 
 

@@ -1,5 +1,4 @@
 require './lib/item'
-require './lib/item'
 require 'pry'
 
 RSpec.describe Item do

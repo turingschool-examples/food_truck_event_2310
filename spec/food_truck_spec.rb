@@ -1,5 +1,4 @@
 require './lib/item'
-require './lib/item'
 require './lib/food_truck' 
 require 'pry'
 

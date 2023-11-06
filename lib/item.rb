@@ -4,6 +4,6 @@ class Item
 
   def initialize(hash)
     @name = hash[:name]
-    @price = hash[:price].delete("$").to_f.round(2)
+    @price = hash[:price].delete("$").to_f
   end
 end

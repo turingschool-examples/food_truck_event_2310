@@ -12,7 +12,7 @@ RSpec.describe Item do
       expect(item1.name).to be_a String
       expect(item1.price).to be_a Float
       expect(item1.name).to eq("Peach Pie (Slice)")
-      expect(item1.price).to eq(3.75)
+      expect(item1.price).to eq 3.75
     end
   end
 end

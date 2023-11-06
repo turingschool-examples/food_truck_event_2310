@@ -138,19 +138,25 @@ RSpec.describe Event do
     event.add_food_truck(food_truck2)
     event.add_food_truck(food_truck3)
 
-    it 'can ran return a Hash with an Array of Items as a key and sub-Hash of quantity and food_trucks as the value' do
+    it 'can ran return a Hash with Items as a key and sub-Hash of quantity and food_trucks as the value' do
       expect(event.total_inventory).to be_a Hash
       expect(event.total_inventory.keys).to be_a Array
-      expect(event.total_inventory.values).to be_a Hash
+      expect(event.total_inventory.values.first).to be_a Hash
       expect(event.total_inventory.keys.first).to be_a Item
     end
 
     it 'also has the sub-hash of quantity => Integer, and food_trucks => Array of FoodTruck' do
-      expect(event.total_inventory.values.first.first).to be_a Integer
-      expect(event.total_inventory.values.first.last).to be_a Array
-      expect(event.total_inventory.values.first.last.first).to be_a FoodTruck
-      require 'pry'; binding.pry
-      expect(event.total_inventory).to eq()
+
+      expect(event.total_inventory.first.last.first.first).to be_a Symbol
+      expect(event.total_inventory.first.last.first.last).to be_a Integer
+      expect(event.total_inventory[item1][:food_trucks]).to be_a Array
+      expect(event.total_inventory[item1][:food_trucks].first).to be_a FoodTruck
+      expect(event.total_inventory).to eq({
+        item1 => {quantity: 100, food_trucks: [food_truck1, food_truck3]},
+        item2 => {quantity: 7, food_trucks: [food_truck1]},
+        item4 => {quantity: 50, food_trucks: [food_truck2]},
+        item3 => {quantity: 25, food_trucks: [food_truck2]}
+      })
     end
   end
 

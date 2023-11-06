@@ -7,16 +7,18 @@ class FoodTruck
     @name = name
     @inventory = {}
     @stock = 0
+  
   end
 
   def stock(item, item_quantity)
-    require 'pry' ; binding.pry
-    @inventory << inventory[item] += quantity
+    if inventory.key?(item)
+      inventory[:item] += quantity
+    else 
+    inventory[:item] = quantity
+    end
   end
 
-  def check_stock(item)
-    inventory[:item]
-  end
-
-
+  # def check_stock(item)
+  #   inventory[:item] || 0
+  # end
 end

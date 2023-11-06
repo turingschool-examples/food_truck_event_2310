@@ -6,17 +6,23 @@ class FoodTruck
     @inventory = {}
   end
 
-  def stock(item, number)
+  def stock(item, quantity)
     if @inventory[item] == nil
-      @inventory.store(item, number) 
+      @inventory.store(item, quantity) 
     else
-      @inventory[item] += number
+      @inventory[item] += quantity
     end
   end
 
   def check_stock(item)
     @inventory[item] = 0 if @inventory[item] == nil
     @inventory[item]
+  end
+
+  def potential_revenue
+    @inventory.sum do |inventory_item, inventory_quantity|
+      inventory_item.price.delete("$").to_f * inventory_quantity
+    end
   end
 
 end

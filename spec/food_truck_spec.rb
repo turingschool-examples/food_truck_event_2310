@@ -19,4 +19,10 @@ RSpec.describe FoodTruck do
       expect(@food_truck.inventory).to eq({})
     end
   end
+
+  describe '#checks_stock' do
+    it 'checks the stock of items' do
+      expect(@food_truck.check_stock(@item1)).to eq(0)
+    end
+  end
 end

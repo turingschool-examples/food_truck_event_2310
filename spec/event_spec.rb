@@ -65,11 +65,25 @@ RSpec.describe Event do
     expect(@event.sorted_item_list).to eq(["Apple Pie (Slice)", "Banana Nice Cream", "Peach Pie (Slice)", "Peach-Raspberry Nice Cream"])
   end
 
-  it 'can return a total inventory' do
+  it 'returns total inventory as specified' do
     total_inventory = @event.total_inventory
 
+    expect(total_inventory).to be_a Hash
+    expect(total_inventory[@item1]).to be_a Hash
     expect(total_inventory[@item1][:quantity]).to eq(100)
-    expect(total_inventory[@item1][:food_trucks]).to eq([@food_truck1, @food_truck3])
+    expect(total_inventory[@item1][:food_trucks]).to include(@food_truck1, @food_truck3)
+    expect(total_inventory[@item2][:quantity]).to eq(7)
+    expect(total_inventory[@item2][:food_trucks]).to include(@food_truck1)
+    expect(total_inventory[@item3][:quantity]).to eq(25)
+    expect(total_inventory[@item3][:food_trucks]).to include(@food_truck2)
+    expect(total_inventory[@item4][:quantity]).to eq(50)
+    expect(total_inventory[@item4][:food_trucks]).to include(@food_truck2)
+  end
 
+  it 'can generate a list of overstocked items' do
+    expect(@event.overstocked_items).to include(@item1)
+    expect(@event.overstocked_items).not_to include(@item2)
+    expect(@event.overstocked_items).not_to include(@item3)
+    expect(@event.overstocked_items).not_to include(@item4)
   end
 end

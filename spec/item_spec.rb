@@ -5,9 +5,13 @@ RSpec.describe Item do
   @item2 = Item.new({name: 'Apple Pie (Slice)', price: '$2.50'})
   end
 
-    it 'exists' do
-      expect(@item1).to be_a(Item)
-      expect(@item2).to eq(Item)
-    end
+  it 'exists' do
+    expect(@item1).to be_a(Item)
+    expect(@item2).to eq(Item)
+  end
+
+  it 'has readable attributes' do
+    expect(@item2.name).to eq("Apple Pie (Slice)")
+    expect(@item2.price).to eq(2.50)
   end
 end

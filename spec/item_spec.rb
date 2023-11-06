@@ -10,11 +10,11 @@ RSpec.describe Item do
   expect(@item2).to be_an_instance_of(Item)
   end
   
-  it 'exists' do
+  it 'has name' do
   expect(@item2.name).to eq('Apple Pie (Slice)')
   end
   
-  it 'exists' do
+  it 'has price' do
   expect(@item2.price).to eq(2.50)
   end
 

@@ -18,4 +18,8 @@ class Event
   def food_trucks_that_sell(item)
     @food_trucks.select{|food_truck| food_truck.inventory.include?(item)}
   end
+
+  def potential_revenue
+    
+  end
 end
